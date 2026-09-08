@@ -59,6 +59,8 @@ def chunk_pages(pages: list[tuple[int, str]], target_tokens: int) -> list[Chunk]
     for page in pages:
         for line in page[1].split("."):
             line = line.replace("\n", "")
+            if not line.strip():
+                continue
             line_chunk = Chunk(idd, line, page[0])
             final_chunks.append(line_chunk)
             idd += 1
