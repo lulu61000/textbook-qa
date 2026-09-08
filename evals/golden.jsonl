@@ -1,0 +1,36 @@
+{"id": "num01", "type": "numeric", "question": "How many pull requests were in the sample?", "expect_pages": [], "expect_keywords": ["100"], "note": "baseline numeric"}
+{"id": "num02", "type": "numeric", "question": "How many pull requests were in AIdev-pop before sampling?", "expect_pages": [], "expect_keywords": ["7122"], "note": "comma-normalisation must work: source has 7,122 and 7122"}
+{"id": "num03", "type": "numeric", "question": "How many pull requests contained strong AI bullet-point patterns?", "expect_pages": [], "expect_keywords": ["88"], "note": ""}
+{"id": "num04", "type": "numeric", "question": "What percentage of pull requests were authored by AI alone at creation?", "expect_pages": [], "expect_keywords": ["65"], "note": ""}
+{"id": "num05", "type": "numeric", "question": "How many pull requests fell into the Explicit AI only group?", "expect_pages": [], "expect_keywords": ["37"], "note": "distractor risk: 37 is also the automation agent count"}
+{"id": "num06", "type": "numeric", "question": "How many pull requests showed no AI involvement at creation?", "expect_pages": [], "expect_keywords": ["1"], "note": "weak keyword, grade by hand or tighten"}
+{"id": "num07", "type": "numeric", "question": "In how many pull requests did the AI fill two or more distinct roles?", "expect_pages": [], "expect_keywords": ["58"], "note": ""}
+{"id": "num08", "type": "numeric", "question": "In how many pull requests was more than one AI tool active at the same time?", "expect_pages": [], "expect_keywords": ["32"], "note": ""}
+{"id": "num09", "type": "numeric", "question": "How often did the chore worker role appear?", "expect_pages": [], "expect_keywords": ["64"], "note": ""}
+{"id": "num10", "type": "numeric", "question": "How many pull requests took three or more correction rounds?", "expect_pages": [], "expect_keywords": ["6"], "note": ""}
+{"id": "num11", "type": "numeric", "question": "What was the highest number of correction rounds observed in one pull request?", "expect_pages": [], "expect_keywords": ["15"], "note": ""}
+{"id": "num12", "type": "numeric", "question": "How many interactions were neutral, positive, and negative?", "expect_pages": [], "expect_keywords": ["82", "17", "1"], "note": "multi-value: partial credit is meaningful here"}
+{"id": "num13", "type": "numeric", "question": "How many pull requests had multiple same-day commits from the same coding agent?", "expect_pages": [], "expect_keywords": ["45"], "note": ""}
+{"id": "def01", "type": "definition", "question": "What does Potential AI only mean?", "expect_pages": [], "expect_keywords": ["summary", "simple"], "note": "author-coined term"}
+{"id": "def02", "type": "definition", "question": "What does Implicit AI plus human mean?", "expect_pages": [], "expect_keywords": ["human only", "summary"], "note": "near-neighbour of def01; tests whether retrieval separates them"}
+{"id": "def03", "type": "definition", "question": "What is the first-upload summary template?", "expect_pages": [], "expect_keywords": ["fixed format"], "note": "the headline finding of RQ1"}
+{"id": "def04", "type": "definition", "question": "What is AIdev-pop?", "expect_pages": [], "expect_keywords": ["500", "stars"], "note": "proper noun, BM25 should win this"}
+{"id": "def05", "type": "definition", "question": "What is the chore worker role?", "expect_pages": [], "expect_keywords": ["chore"], "note": ""}
+{"id": "lex01", "type": "lexical", "question": "Which paper inspired this study?", "expect_pages": [], "expect_keywords": ["hao li"], "note": "rare proper noun, high IDF"}
+{"id": "lex02", "type": "lexical", "question": "Which coding agents are named in the introduction?", "expect_pages": [], "expect_keywords": ["codex", "copilot"], "note": ""}
+{"id": "lex03", "type": "lexical", "question": "What is research question 2?", "expect_pages": [], "expect_keywords": ["discussion"], "note": "RQ labels are distinctive tokens"}
+{"id": "par01", "type": "paraphrase", "question": "How many pull requests were sampled?", "expect_pages": [], "expect_keywords": ["100", "7122"], "note": "source says 'randomly chose', query says 'sampled' -- the vocabulary gap case"}
+{"id": "par02", "type": "paraphrase", "question": "What repository popularity threshold was used?", "expect_pages": [], "expect_keywords": ["500", "stars"], "note": "source says 'more than 500 stars', never 'threshold' or 'popularity'"}
+{"id": "par03", "type": "paraphrase", "question": "Who labelled the data?", "expect_pages": [], "expect_keywords": ["single annotator"], "note": "source says 'single annotator' and 'manually coded'"}
+{"id": "par04", "type": "paraphrase", "question": "Do developers chat socially with AI tools?", "expect_pages": [], "expect_keywords": ["neutral", "command"], "note": "source frames it as commands vs converse"}
+{"id": "par05", "type": "paraphrase", "question": "How good is AI at producing correct code without help?", "expect_pages": [], "expect_keywords": ["junior", "usable"], "note": "source says 'works like a junior developer'"}
+{"id": "par06", "type": "paraphrase", "question": "How was sampling bias reduced?", "expect_pages": [], "expect_keywords": ["one per repository"], "note": ""}
+{"id": "par07", "type": "paraphrase", "question": "Can you always tell an automated bot apart from an AI tool?", "expect_pages": [], "expect_keywords": ["no reliable", "distinguish"], "note": "answer is negative; source phrasing differs a lot"}
+{"id": "xsec01", "type": "cross_section", "question": "What are the limitations of this study?", "expect_pages": [], "expect_keywords": ["annotator", "merged", "popular"], "note": "answer spans one long passage; tests whether chunking split it"}
+{"id": "xsec02", "type": "cross_section", "question": "What are the three research questions?", "expect_pages": [], "expect_keywords": ["create", "discussion", "react"], "note": "spans three separate statements"}
+{"id": "xsec03", "type": "cross_section", "question": "How do the RQ2 and RQ3 findings together support the claim that the human role is shifting?", "expect_pages": [], "expect_keywords": ["reviewing", "correcting"], "note": "hardest case: needs two distant passages in one context window"}
+{"id": "xsec04", "type": "cross_section", "question": "Why did the author study only merged pull requests, and what bias does that introduce?", "expect_pages": [], "expect_keywords": ["merged", "bias"], "note": "reason and consequence stated in different sentences"}
+{"id": "abs01", "type": "abstention", "question": "What statistical tests were used to check significance?", "expect_pages": [], "expect_keywords": [], "note": "not in document; a correct answer declines"}
+{"id": "abs02", "type": "abstention", "question": "What was the inter-rater reliability score?", "expect_pages": [], "expect_keywords": [], "note": "not in document; tempting because 'annotator' is discussed"}
+{"id": "abs03", "type": "abstention", "question": "Which programming languages did the sampled repositories use?", "expect_pages": [], "expect_keywords": [], "note": "not in document; tempting because repositories are discussed"}
+{"id": "abs04", "type": "abstention", "question": "How much does GitHub Copilot cost per month?", "expect_pages": [], "expect_keywords": [], "note": "not in document; Copilot is named, so retrieval will return something plausible"}

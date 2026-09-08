@@ -1,0 +1,470 @@
+[
+  {
+    "id": "num01",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.57,
+    "answer": "According to the excerpt, 65 percent of the pull requests were authored by AI alone at creation.",
+    "cited": [
+      "p.5",
+      "p.1",
+      "p.1"
+    ]
+  },
+  {
+    "id": "num02",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.17,
+    "answer": "According to the excerpt from page 1, 100 random pull requests were chosen from the AIdev-pop dataset.",
+    "cited": [
+      "p.1",
+      "p.4",
+      "p.5"
+    ]
+  },
+  {
+    "id": "num03",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.13,
+    "answer": "88 out of 100 pull requests contained strong AI bullet-point patterns.",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.1"
+    ]
+  },
+  {
+    "id": "num04",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.12,
+    "answer": "65 percent of the pull requests were authored by AI alone at creation.",
+    "cited": [
+      "p.5",
+      "p.2",
+      "p.1"
+    ]
+  },
+  {
+    "id": "num05",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.06,
+    "answer": "37",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.5"
+    ]
+  },
+  {
+    "id": "num06",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.22,
+    "answer": "According to the excerpt, only 1 pull request in the whole sample showed no AI involvement at creation.",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.4"
+    ]
+  },
+  {
+    "id": "num07",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.22,
+    "answer": "In 58 of 100 pull requests, the AI filled 2 or more distinct roles.",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.2"
+    ]
+  },
+  {
+    "id": "num08",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.14,
+    "answer": "[4.2 p.137]",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.6"
+    ]
+  },
+  {
+    "id": "num09",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.2,
+    "answer": "The chart shows which roles appeared and how often, [5.2 p.137].",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.2"
+    ]
+  },
+  {
+    "id": "num10",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.22,
+    "answer": "According to the excerpt from page 5, 6 pull requests took 3 or more correction rounds.",
+    "cited": [
+      "p.5",
+      "p.2",
+      "p.5"
+    ]
+  },
+  {
+    "id": "num11",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.17,
+    "answer": "The highest number of correction rounds observed in one pull request was 3.",
+    "cited": [
+      "p.5",
+      "p.2",
+      "p.2"
+    ]
+  },
+  {
+    "id": "num12",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 0.3333333333333333,
+    "latency_s": 0.13,
+    "answer": "[4.2 p.137]",
+    "cited": [
+      "p.5",
+      "p.2",
+      "p.1"
+    ]
+  },
+  {
+    "id": "num13",
+    "type": "numeric",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.18,
+    "answer": "45 pull requests had multiple same-day commits from the same coding agent.",
+    "cited": [
+      "p.3",
+      "p.6",
+      "p.1"
+    ]
+  },
+  {
+    "id": "def01",
+    "type": "definition",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.3,
+    "answer": "Potential AI only refers to AI systems that are capable of performing tasks that are not yet fully developed or understood, but are believed to be possible in the future.",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.5"
+    ]
+  },
+  {
+    "id": "def02",
+    "type": "definition",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.29,
+    "answer": "Implicit AI plus human refers to a case where the AI system appears to be human-like, but it is actually a combination of explicit AI and human input.",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.2"
+    ]
+  },
+  {
+    "id": "def03",
+    "type": "definition",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.19,
+    "answer": "The first-upload summary template is located on page 137 of the textbook.",
+    "cited": [
+      "p.2",
+      "p.1",
+      "p.2"
+    ]
+  },
+  {
+    "id": "def04",
+    "type": "definition",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.21,
+    "answer": "AIdev-pop is a term used to describe the prevalence of AI tools in the development process.",
+    "cited": [
+      "p.1",
+      "p.1",
+      "p.4"
+    ]
+  },
+  {
+    "id": "def05",
+    "type": "definition",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.17,
+    "answer": "The chore worker role is described as leading at 64.",
+    "cited": [
+      "p.2",
+      "p.5",
+      "p.1"
+    ]
+  },
+  {
+    "id": "lex01",
+    "type": "lexical",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.18,
+    "answer": "The paper inspired this study is [4.2 p.137].",
+    "cited": [
+      "p.4",
+      "p.1",
+      "p.1"
+    ]
+  },
+  {
+    "id": "lex02",
+    "type": "lexical",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.1,
+    "answer": "Codex, Copilot",
+    "cited": [
+      "p.4",
+      "p.1",
+      "p.1"
+    ]
+  },
+  {
+    "id": "lex03",
+    "type": "lexical",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.16,
+    "answer": "Research question 2 is not explicitly stated in the given excerpts.",
+    "cited": [
+      "p.2",
+      "p.2",
+      "p.1"
+    ]
+  },
+  {
+    "id": "par01",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.14,
+    "answer": "According to the excerpt, 1 pull request was sampled.",
+    "cited": [
+      "p.1",
+      "p.5",
+      "p.1"
+    ]
+  },
+  {
+    "id": "par02",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.5,
+    "latency_s": 0.18,
+    "answer": "The repository popularity threshold used was 100 stars.",
+    "cited": [
+      "p.1",
+      "p.1",
+      "p.4"
+    ]
+  },
+  {
+    "id": "par03",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.13,
+    "answer": "The data was labelled by a human.",
+    "cited": [
+      "p.3",
+      "p.6",
+      "p.1"
+    ]
+  },
+  {
+    "id": "par04",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.17,
+    "answer": "No, developers do not chat socially with AI tools.",
+    "cited": [
+      "p.4",
+      "p.1",
+      "p.1"
+    ]
+  },
+  {
+    "id": "par05",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.19,
+    "answer": "AI is steadier when commenting on code than when writing correct code on its own.",
+    "cited": [
+      "p.5",
+      "p.2",
+      "p.1"
+    ]
+  },
+  {
+    "id": "par06",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.18,
+    "answer": "The location of the answer is [4.2 p.137].",
+    "cited": [
+      "p.1",
+      "p.3",
+      "p.6"
+    ]
+  },
+  {
+    "id": "par07",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.18,
+    "answer": "No, you cannot always tell an automated bot apart from an AI tool.",
+    "cited": [
+      "p.2",
+      "p.3",
+      "p.6"
+    ]
+  },
+  {
+    "id": "xsec01",
+    "type": "cross_section",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.17,
+    "answer": "The limitations of this study are not explicitly stated in the given excerpts.",
+    "cited": [
+      "p.1",
+      "p.3",
+      "p.4"
+    ]
+  },
+  {
+    "id": "xsec02",
+    "type": "cross_section",
+    "retrieval_hit": null,
+    "keyword_recall": 0.3333333333333333,
+    "latency_s": 0.69,
+    "answer": "The three research questions are:\n1. How do AI tools, particularly coding agents, are used in the workflow with these tools?\n2. What kinds of interactions do AI tools, particularly coding agents, create during the workflow with these tools?\n3. What is the gap between what we know and what we don't about how AI tools, particularly coding agents, are used and interact with these tools.",
+    "cited": [
+      "p.1",
+      "p.1",
+      "p.1"
+    ]
+  },
+  {
+    "id": "xsec03",
+    "type": "cross_section",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.45,
+    "answer": "The RQ2 and RQ3 findings together support the claim that the human role is shifting by showing that the AI generated reports are on point, the code work needs human steering, and the oversight on AI tool is lighter than most project workflows.",
+    "cited": [
+      "p.6",
+      "p.6",
+      "p.3"
+    ]
+  },
+  {
+    "id": "xsec04",
+    "type": "cross_section",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.92,
+    "answer": "The author studied only merged pull requests because they wanted to focus on how AI tools handle success pull requests. This was mainly for understanding how well the AI tool could handle issues that were already resolved, rather than focusing on potential problems or insights that could be gained from the tool's performance on unmerged pull requests. The bias introduced by this approach is that the author is only considering the positive outcomes of the AI tool's performance, which may not reflect the full range of potential issues or insights that could be gained from the tool's performance on unmerged pull requests.",
+    "cited": [
+      "p.5",
+      "p.2",
+      "p.6"
+    ]
+  },
+  {
+    "id": "abs01",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.41,
+    "answer": "[p.14] To understand what happens in a pull request involving AI tools, I first had to know how many ways an AI tool can participate, I then conducted a statistical test to check the significance of this information.",
+    "cited": [
+      "p.1",
+      "p.4",
+      "p.1"
+    ]
+  },
+  {
+    "id": "abs02",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.17,
+    "answer": "The inter-rater reliability score was not provided in the given excerpts.",
+    "cited": [
+      "p.5",
+      "p.1",
+      "p.6"
+    ]
+  },
+  {
+    "id": "abs03",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.11,
+    "answer": "The sampled repositories used Python and JavaScript.",
+    "cited": [
+      "p.3",
+      "p.1",
+      "p.5"
+    ]
+  },
+  {
+    "id": "abs04",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.16,
+    "answer": "According to the excerpt, GitHub Copilot costs $10 per month.",
+    "cited": [
+      "p.5",
+      "p.2",
+      "p.1"
+    ]
+  }
+]
