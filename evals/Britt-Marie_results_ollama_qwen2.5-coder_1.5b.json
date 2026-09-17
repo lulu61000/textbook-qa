@@ -1,0 +1,444 @@
+[
+  {
+    "id": "ent01",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 2.09,
+    "answer": "The town Britt-Marie moves to is [4.2 p.137].",
+    "cited": [
+      "p.48",
+      "p.101",
+      "p.273"
+    ]
+  },
+  {
+    "id": "ent02",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.1,
+    "answer": "The husband of Britt-Marie is Sven.",
+    "cited": [
+      "p.34",
+      "p.100",
+      "p.50"
+    ]
+  },
+  {
+    "id": "ent03",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.11,
+    "answer": "The name of Britt-Marie's sister is Sonja.",
+    "cited": [
+      "p.72",
+      "p.273",
+      "p.99"
+    ]
+  },
+  {
+    "id": "ent04",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.14,
+    "answer": "The woman who uses a wheelchair and runs the pizzeria is named Brittany-Marie.",
+    "cited": [
+      "p.99",
+      "p.32",
+      "p.72"
+    ]
+  },
+  {
+    "id": "ent05",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.12,
+    "answer": "The police officer in Borg is [4.2 p.137].",
+    "cited": [
+      "p.210",
+      "p.257",
+      "p.275"
+    ]
+  },
+  {
+    "id": "ent06",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.5,
+    "latency_s": 0.11,
+    "answer": "The book mentions two English soccer clubs: Manchester United and Liverpool.",
+    "cited": [
+      "p.161",
+      "p.255",
+      "p.255"
+    ]
+  },
+  {
+    "id": "ent07",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.08,
+    "answer": "[18 p.18]",
+    "cited": [
+      "p.50",
+      "p.32",
+      "p.18"
+    ]
+  },
+  {
+    "id": "ent08",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.09,
+    "answer": "The name of the character called Bank is Pirate.",
+    "cited": [
+      "p.273",
+      "p.72",
+      "p.99"
+    ]
+  },
+  {
+    "id": "ent09",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.09,
+    "answer": "[4.2 p.176]",
+    "cited": [
+      "p.158",
+      "p.176",
+      "p.163"
+    ]
+  },
+  {
+    "id": "ent10",
+    "type": "entity",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.07,
+    "answer": "[p.283]",
+    "cited": [
+      "p.37",
+      "p.283",
+      "p.61"
+    ]
+  },
+  {
+    "id": "att01",
+    "type": "attribute",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.1,
+    "answer": "Britt-Marie is 25 years old.",
+    "cited": [
+      "p.60",
+      "p.57",
+      "p.232"
+    ]
+  },
+  {
+    "id": "att02",
+    "type": "attribute",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.09,
+    "answer": "[4.2 p.137]",
+    "cited": [
+      "p.32",
+      "p.194",
+      "p.260"
+    ]
+  },
+  {
+    "id": "att03",
+    "type": "attribute",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.1,
+    "answer": "Britt-Marie develops a relationship with a dog.",
+    "cited": [
+      "p.183",
+      "p.32",
+      "p.194"
+    ]
+  },
+  {
+    "id": "att04",
+    "type": "attribute",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.15,
+    "answer": "Bank's disability is described as \"that is obviously not what I mean\" on page 130.",
+    "cited": [
+      "p.119",
+      "p.130",
+      "p.194"
+    ]
+  },
+  {
+    "id": "att05",
+    "type": "attribute",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.11,
+    "answer": "Britt-Marie registers what was said [p.32].",
+    "cited": [
+      "p.32",
+      "p.194",
+      "p.194"
+    ]
+  },
+  {
+    "id": "att06",
+    "type": "attribute",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.09,
+    "answer": "Britt-Marie associates her sister with reading.",
+    "cited": [
+      "p.32",
+      "p.194",
+      "p.260"
+    ]
+  },
+  {
+    "id": "par01",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.16,
+    "answer": "Britt-Marie left her marriage because she did not deal with the rat.",
+    "cited": [
+      "p.202",
+      "p.168",
+      "p.54"
+    ]
+  },
+  {
+    "id": "par02",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.09,
+    "answer": "[p.24]",
+    "cited": [
+      "p.277",
+      "p.24",
+      "p.168"
+    ]
+  },
+  {
+    "id": "par03",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.19,
+    "answer": "Britt-Marie ends up coaching children in [4.2 p.137].",
+    "cited": [
+      "p.82",
+      "p.126",
+      "p.169"
+    ]
+  },
+  {
+    "id": "par04",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.22,
+    "answer": "Britt-Marie's attitude toward untidiness is described as \"serious\" on page 180.",
+    "cited": [
+      "p.119",
+      "p.130",
+      "p.180"
+    ]
+  },
+  {
+    "id": "par05",
+    "type": "paraphrase",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.15,
+    "answer": "The boys playing soccer see it, but they hardly react.",
+    "cited": [
+      "p.226",
+      "p.137",
+      "p.283"
+    ]
+  },
+  {
+    "id": "pro01",
+    "type": "pronoun",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.1,
+    "answer": "Britt-Marie cleans.",
+    "cited": [
+      "p.120",
+      "p.194",
+      "p.40"
+    ]
+  },
+  {
+    "id": "pro02",
+    "type": "pronoun",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.21,
+    "answer": "Britt-Marie reacts to the rat the first time by putting out some Snickers for the rat.",
+    "cited": [
+      "p.137",
+      "p.246",
+      "p.158"
+    ]
+  },
+  {
+    "id": "pro03",
+    "type": "pronoun",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.22,
+    "answer": "Kent says \"I asked for you in the pizzeria\" when he comes to find Britt-Marie.",
+    "cited": [
+      "p.170",
+      "p.235",
+      "p.135"
+    ]
+  },
+  {
+    "id": "xsec01",
+    "type": "cross_section",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 1.21,
+    "answer": "Britt-Marie's relationship with Vega changes significantly over the story. Initially, she is described as \"one does when one doesn't want to discuss Britt-Marie and Kent's relationship\" [p.183]. However, as the story progresses, she becomes more involved in Vega's life and becomes a central figure in the narrative. She is described as \"He could change\" [p.176], indicating that she is able to influence Vega's decisions and actions. Additionally, she is portrayed as a character who is deeply involved in Vega's life and becomes a central figure in the narrative. She is described as \"where does Vega keep that shit?\" Shedisappears into the kitchen [p.96], indicating that she is able to influence Vega's decisions and actions.",
+    "cited": [
+      "p.183",
+      "p.176",
+      "p.96"
+    ]
+  },
+  {
+    "id": "xsec02",
+    "type": "cross_section",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.23,
+    "answer": "The recreation centre by the end is described as \"awhile since anyone in Borg wanted to know what happens next.\"",
+    "cited": [
+      "p.277",
+      "p.218",
+      "p.218"
+    ]
+  },
+  {
+    "id": "xsec03",
+    "type": "cross_section",
+    "retrieval_hit": null,
+    "keyword_recall": 1.0,
+    "latency_s": 0.14,
+    "answer": "Ingrid plays a crucial role in Britt-Marie's decisions.",
+    "cited": [
+      "p.67",
+      "p.194",
+      "p.127"
+    ]
+  },
+  {
+    "id": "xsec04",
+    "type": "cross_section",
+    "retrieval_hit": null,
+    "keyword_recall": 0.0,
+    "latency_s": 0.29,
+    "answer": "The members of Britt-Marie's household in Borg are the Borg themselves. They are all in hershadow, which means they are invisible to the outside world.",
+    "cited": [
+      "p.121",
+      "p.283",
+      "p.66"
+    ]
+  },
+  {
+    "id": "abs01",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.09,
+    "answer": "[p.175]",
+    "cited": [
+      "p.208",
+      "p.32",
+      "p.175"
+    ]
+  },
+  {
+    "id": "abs02",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.41,
+    "answer": "According to the excerpt from page 255, the Borg play as if they live in Borg, which implies that they are a fictional or imaginary group of people. The exact number of people living in Borg is not specified in the given text.",
+    "cited": [
+      "p.39",
+      "p.201",
+      "p.255"
+    ]
+  },
+  {
+    "id": "abs03",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.19,
+    "answer": "Britt-Marie's mother's name is [4.2 p.137].",
+    "cited": [
+      "p.119",
+      "p.130",
+      "p.194"
+    ]
+  },
+  {
+    "id": "abs04",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.2,
+    "answer": "The story is set during the 2019-2020 Premier League season.",
+    "cited": [
+      "p.282",
+      "p.259",
+      "p.145"
+    ]
+  },
+  {
+    "id": "abs05",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.29,
+    "answer": "Fredrik Backman said that he was inspired by the story of Britt-Marie, a young woman who discovers she has the power to control the weather.",
+    "cited": [
+      "p.295",
+      "p.292",
+      "p.286"
+    ]
+  },
+  {
+    "id": "abs06",
+    "type": "abstention",
+    "retrieval_hit": null,
+    "keyword_recall": null,
+    "latency_s": 0.19,
+    "answer": "Britt-Marie earns at the recreation centre [57 p.57].",
+    "cited": [
+      "p.135",
+      "p.260",
+      "p.57"
+    ]
+  }
+]

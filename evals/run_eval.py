@@ -61,6 +61,7 @@ def main():
             text = " ".join(c.text for c, _ in hits)
             kws = case["expect_keywords"]
             hit = None if not kws else all(k.lower() in text.lower() for k in kws)
+            print(text)
             print(hit)
         return
     

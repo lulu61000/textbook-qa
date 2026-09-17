@@ -10,6 +10,10 @@ Ask questions about terms in a PDF textbook. Answers cite the page they came fro
 
 `sentence-transformers` and `anthropic` are only needed in phase 2.
 
+## Test Before Use
+    python -m evals.run_eval --retrieval-only     # check retriever if hit key words
+    python -m evals.llm_test                      # llm running test
+
 ## Use
 
     python -m scripts.build_index data/book.pdf   # PDF -> index/chunks.jsonl

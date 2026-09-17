@@ -3,7 +3,7 @@ from src.retrieve import BM25Retriever
 import config
 
 r = BM25Retriever(load_chunks(config.INDEX_DIR / "chunks.jsonl"))
-for q in ["how many pull requests were sampled",
+for q in ["how many pull requests were sampled", #some of the questions in golden.jsonl to test if bm25 hit right key words in pdf chunk run with: python -m evals.run_eval --retrieval-only
           "what is AIdev-pop",
           "how many roles did AI fill"]:
     print(f"\n{q}")
