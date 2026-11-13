@@ -3,7 +3,7 @@
 Ask questions about terms in a PDF textbook. Answers cite the page they came from.
 
 ## Setup
-
+# Asumming Linux Environment
     uv venv --python 3.11 && source .venv/bin/activate
     uv pip install pymupdf rank-bm25 numpy openai streamlit
     ollama pull qwen2.5:7b-instruct
