@@ -2,7 +2,7 @@
 
 Ask questions about terms in a PDF textbook. Answers cite the page they came from.
 
-## Setup
+## First Time Setup
 # Asumming Linux Environment
     uv venv --python 3.11 && source .venv/bin/activate
     uv pip install pymupdf rank-bm25 numpy openai streamlit
