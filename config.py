@@ -12,6 +12,14 @@ BM25_WEIGHT = 0.7      # term queries favour lexical match; tune this with evals
 CHUNK_TARGET_TOKENS = 150
 
 # --- generation ---
-LLM_BACKEND = os.getenv("LLM_BACKEND", "ollama")   # "ollama" | "claude"
+LLM_BACKEND = os.getenv("LLM_BACKEND", "ollama")   # "ollama" | "claude" | "openai"
+
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5-coder:1.5b")
-CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
+
+CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")   # key: ANTHROPIC_API_KEY
+
+# Any OpenAI-compatible endpoint: OpenAI, vLLM, LM Studio, DeepSeek, OpenRouter...
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")   # None -> official OpenAI API
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")

@@ -3,10 +3,16 @@
 Ask questions about terms in a PDF textbook. Answers cite the page they came from.
 
 ## First Time Setup
-# Asumming Linux Environment
+# Asumming Linux
     uv venv --python 3.11 && source .venv/bin/activate
     uv pip install pymupdf rank-bm25 numpy openai streamlit
     ollama pull qwen2.5:7b-instruct
+
+# Asumming Windows with python 3.11  
+    rmdir /s /q .venv
+    uv venv --python 3.11
+    .venv\Scripts\activate
+    uv pip install pymupdf rank-bm25 numpy openai streamlit
 
 `sentence-transformers` and `anthropic` are only needed in phase 2.
 
@@ -19,6 +25,37 @@ Ask questions about terms in a PDF textbook. Answers cite the page they came fro
     python -m scripts.build_index data/book.pdf   # PDF -> index/chunks.jsonl
     python -m evals.run_eval                      # metrics
     streamlit run app.py                          # demo
+
+## Choosing the LLM
+
+Set via environment variables (read in `config.py`; no `.env` file is loaded).
+`LLM_BACKEND` picks the backend, default `ollama`.
+
+| Backend  | Variables (default)                                                                 |
+|----------|-------------------------------------------------------------------------------------|
+| `ollama` | `OLLAMA_MODEL` (`qwen2.5-coder:1.5b`), `OLLAMA_BASE_URL` (`http://localhost:11434/v1`) |
+| `claude` | `CLAUDE_MODEL` (`claude-sonnet-5-5`), `ANTHROPIC_API_KEY` (required)                 |
+| `openai` | `OPENAI_MODEL` (`gpt-4o-mini`), `OPENAI_BASE_URL` (unset = official OpenAI), `OPENAI_API_KEY` (required) |
+
+- **model**: which model the server should run, e.g. `gpt-4o-mini`, `deepseek-chat`.
+- **base URL**: where requests are sent. Point it at any OpenAI-compatible
+  server (vLLM, LM Studio, DeepSeek, OpenRouter, a remote Ollama...).
+- **API key**: proves who you are to that server and gets billed. Local servers
+  that don't check it still need a non-empty string.
+
+Linux / bash (one-off for a single command):
+
+    LLM_BACKEND=openai OPENAI_BASE_URL=https://api.deepseek.com/v1 \
+      OPENAI_API_KEY=<key> OPENAI_MODEL=deepseek-chat python -m evals.llm_test
+
+Windows / PowerShell (lasts for the current window):
+
+    $env:LLM_BACKEND="openai"; $env:OPENAI_BASE_URL="https://api.deepseek.com/v1"
+    $env:OPENAI_API_KEY="<key>"; $env:OPENAI_MODEL="deepseek-chat"
+    python -m evals.llm_test
+
+Run `evals.run_eval` under each backend to compare models on the same golden
+set; results are saved per backend as `evals/results_<backend>_<model>.json`.
 
 ## Build order
 
