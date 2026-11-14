@@ -65,3 +65,19 @@ class HybridRetriever:
         already-truncated lists and lose recall.
         """
         raise NotImplementedError
+
+
+RETRIEVERS = ("bm25", "vector", "hybrid")
+
+
+def get_retriever(name: str, chunks: list[Chunk]) -> Retriever:
+    """Build a retriever by name. Mirrors llm.get_llm so evals can swap stages."""
+    if name == "bm25":
+        return BM25Retriever(chunks)
+    if name == "vector":
+        return VectorRetriever(chunks)
+    if name == "hybrid":
+        import config
+        return HybridRetriever(BM25Retriever(chunks), VectorRetriever(chunks),
+                               config.BM25_WEIGHT)
+    raise ValueError(f"unknown retriever {name!r}; choose from {list(RETRIEVERS)}")
