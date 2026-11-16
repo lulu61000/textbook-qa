@@ -138,6 +138,9 @@ def run_retrieval_only(args, retriever, chunks):
     # terminal
     print(f"\nretriever={args.retriever}  k={args.k}  k_wide={args.k_wide}  depth={depth}")
     print(page_fallback_status(use_pages, n_pages))
+    embed = embed_status(retriever)
+    if embed:
+        print(embed)
     print(f"ranks: N = keyword match, Np = page match only, >{depth} = neither, n/a = untestable\n")
     print(f"{head[0]:<14}{head[1]:>4}{head[2]:>11}{head[3]:>12}{head[4]:>7}{head[5]:>11}  {head[6]}")
     for row in table:
@@ -145,7 +148,7 @@ def run_retrieval_only(args, retriever, chunks):
 
     if not args.no_record:
         out = record_baseline(args, chunks, depth, head, table,
-                              page_fallback_status(use_pages, n_pages))
+                              page_fallback_status(use_pages, n_pages), embed)
         print(f"\n-> appended to {out}")
 
 
@@ -176,7 +179,19 @@ def _run_info(chunks) -> dict:
 BASELINES = Path(__file__).parent / "baselines.md"
 
 
-def record_baseline(args, chunks, depth, head, table, page_status: str) -> Path:
+def embed_status(retriever) -> str | None:
+    """Which embedding model and prefixes produced the vectors, or None for BM25."""
+    vec = getattr(retriever, "vector", retriever)       # hybrid wraps a VectorRetriever
+    if not hasattr(vec, "model_name"):
+        return None
+    q = vec.prompts.get("query", "")
+    d = vec.prompts.get("document", "")
+    return (f"embed: {vec.model_name}, prefixes from {vec.prompt_source}, "
+            f"query prefix {q!r}, document prefix {d!r}, cache `{vec.cache_path.name}`")
+
+
+def record_baseline(args, chunks, depth, head, table, page_status: str,
+                    embed: str | None = None) -> Path:
     info = _run_info(chunks)
     lines = []
     if not BASELINES.exists():
@@ -195,6 +210,7 @@ def record_baseline(args, chunks, depth, head, table, page_status: str) -> Path:
         f"chunk_target_tokens={config.CHUNK_TARGET_TOKENS}{weight}, "
         f"tokenizer sha1 `{info['tokenizer_sha']}`",
         f"- {page_status}",
+        *([f"- {embed}"] if embed else []),
         f"- code: git `{info['git']}`",
         f"- ranks: `N` keyword match, `Np` page match only (keywords missed), "
         f"`>{depth}` neither, `n/a` untestable (no keywords or pages)",

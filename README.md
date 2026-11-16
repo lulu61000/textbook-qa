@@ -37,7 +37,7 @@ each number can be traced to what produced it.
 
 | Flag | Default | Meaning |
 |------|---------|---------|
-| `--retriever` | `bm25` | `bm25` \| `vector` \| `hybrid` (vector/hybrid not finished yet) |
+| `--retriever` | `bm25` | `bm25` \| `vector` \| `hybrid` (hybrid not finished yet) |
 | `--k` | `TOP_K` (3) | main cutoff |
 | `--k-wide` | 10 | second cutoff: recall@k low but recall@k-wide high = ranking problem; both low = recall problem |
 | `--rank-depth` | 50 | how deep to search for the correct chunk's rank |
@@ -58,6 +58,17 @@ document most chunks sit on an "expected" page, so a page match proves
 nothing. Each run prints and records whether it was ON or OFF. When ON,
 retrieval-only checks keywords across the whole depth before trying pages,
 so it can still disagree with end-to-end on the same question.
+
+### Vector retriever settings
+
+- `EMBED_MODEL` (env, default `BAAI/bge-small-en-v1.5`): the embedding model.
+- Query/document prefixes: taken from the model's own config if it declares
+  non-empty ones, otherwise from `EMBED_PREFIXES` in `config.py`. bge needs
+  `Represent this sentence for searching relevant passages: ` on queries;
+  leaving it out lowers scores without any error.
+- `EMBED_PREFIXES_OFF=1` (env) drops all prefixes, to measure what they're worth.
+- Vectors are cached in `index/vectors_<key>.npy`; the key covers the model,
+  the prefixes and the chunk texts, so changing any of them re-encodes.
 
 ## Choosing the LLM
 
@@ -102,7 +113,7 @@ Pick the retriever with `--retriever bm25|vector|hybrid` (default `bm25`).
 Each step's number is the deliverable. A pipeline with no baseline cannot
 show improvement, and unmeasured improvement is indistinguishable from none.
 
-## Next steps (planned, not started)
+## Next steps (in progress)
 
 The point of this project is the evaluation: an empirical look at *why* RAG
 retrieval fails, with an eval setup anyone can re-run. Building the RAG is
@@ -116,16 +127,34 @@ helped.
 
 **1. Four runs**
 
-| Run | Retrieval | Generation | Command |
-|-----|-----------|------------|---------|
-| A | BM25   | skipped  | `python -m evals.run_eval --retrieval-only` |
-| B | hybrid | skipped  | `--retrieval-only --retriever hybrid` |
-| C | hybrid | local 7B | `LLM_BACKEND=ollama` |
-| D | hybrid | Claude   | `LLM_BACKEND=claude` |
+| Run | Retrieval | Generation | Command | Status |
+|-----|-----------|------------|---------|--------|
+| A | BM25   | skipped  | `python -m evals.run_eval --retrieval-only` | ✅ done |
+| B | hybrid | skipped  | `--retrieval-only --retriever hybrid` | ⏳ needs `HybridRetriever.search` |
+| C | hybrid | local 7B | `LLM_BACKEND=ollama` | ⏳ |
+| D | hybrid | Claude   | `LLM_BACKEND=claude` | ⏳ |
 
-Prerequisites: the `--retriever {bm25,vector,hybrid}` flag exists, but
-`HybridRetriever.search` is still a stub and `VectorRetriever` is untested.
-A cost-per-query column is also still needed (latency is already recorded).
+Done so far:
+- `--retriever {bm25,vector,hybrid}` flag, and a logger that appends every
+  retrieval-only run to `evals/baselines.md`.
+- `VectorRetriever` (bge-small-en-v1.5, query prefix, vector cache), measured
+  with and without the query prefix.
+
+Results on `My_words.pdf` (37 questions, page fallback off):
+
+| Retriever | recall@3 | recall@10 | MRR |
+|-----------|----------|-----------|-----|
+| BM25 (A)                     | 0.45 | 0.67 | 0.48 |
+| vector, no prefix            | 0.55 | 0.70 | 0.49 |
+| vector, bge query prefix     | 0.55 | 0.79 | 0.51 |
+
+Vector beats BM25 overall, mostly on definition (recall@3 0.20 → 1.00), but
+is worse on paraphrase (0.29 → 0.14): each retriever wins different question
+types, which is the case for hybrid. The query prefix leaves recall@3
+unchanged and lifts recall@10 (0.70 → 0.79).
+
+Still to do: `HybridRetriever.search` (score fusion), then runs B–D, and a
+cost-per-query column (latency is already recorded).
 
 The findings are the differences between runs:
 - **B − A**: what vector retrieval adds. This is the only evidence that hybrid retrieval is worth it.

@@ -11,6 +11,24 @@ TOP_K = 3              # chunks passed to the LLM
 BM25_WEIGHT = 0.7      # term queries favour lexical match; tune this with evals
 CHUNK_TARGET_TOKENS = 150
 
+# --- embeddings (VectorRetriever) ---
+EMBED_MODEL = os.getenv("EMBED_MODEL", "BAAI/bge-small-en-v1.5")
+
+# Asymmetric retrieval: short questions vs long statements. These models were
+# trained with a prefix telling them "this is a query, place it where its
+# answer would be". Forgetting it costs points silently -- no error.
+# Used only when the model's own config declares no non-empty prompts
+# (bge-small-en-v1.5 ships {'query': '', 'document': ''}, i.e. empty).
+EMBED_PREFIXES = {
+    "BAAI/bge-small-en-v1.5": {"query": "Represent this sentence for searching relevant passages: ", "document": ""},
+    "BAAI/bge-base-en-v1.5":  {"query": "Represent this sentence for searching relevant passages: ", "document": ""},
+    "BAAI/bge-m3":            {"query": "", "document": ""},      # m3 needs no prefix
+    "intfloat/e5-base-v2":    {"query": "query: ", "document": "passage: "},
+}
+
+# EMBED_PREFIXES_OFF=1 drops all prefixes, to measure what they are worth.
+EMBED_PREFIXES_OFF = os.getenv("EMBED_PREFIXES_OFF", "") == "1"
+
 # --- evals ---
 # Page fallback (expect_pages) only switches on when the corpus has MORE pages
 # than this. On a short document most chunks sit on an "expected" page, so a
