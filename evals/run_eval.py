@@ -24,13 +24,31 @@ def load_golden():
         return [json.loads(l) for l in f if l.strip()]
 
 
-def retrieval_hit(ans, case) -> tuple[bool | None, str | None]:
+def page_fallback_enabled(chunks) -> tuple[bool, int]:
+    """Page matching only means something on a long document. Returns
+    (enabled, page count): enabled when the corpus has more pages than
+    config.PAGE_AMOUNT_TRIGGER_PAGE_HIT."""
+    n_pages = len({c.page for c in chunks})
+    return n_pages > config.PAGE_AMOUNT_TRIGGER_PAGE_HIT, n_pages
+
+
+def page_fallback_status(use_pages: bool, n_pages: int) -> str:
+    rule = f"{n_pages} pages {'>' if use_pages else '<='} {config.PAGE_AMOUNT_TRIGGER_PAGE_HIT}"
+    return f"page fallback {'ON' if use_pages else 'OFF'} ({rule})"
+
+
+def is_untestable(case, use_pages: bool) -> bool:
+    """No keywords and no usable pages -> nothing to check retrieval against."""
+    return not case["expect_keywords"] and not (use_pages and case.get("expect_pages"))
+
+
+def retrieval_hit(ans, case, use_pages: bool) -> tuple[bool | None, str | None]:
     """Did the chunks handed to the LLM hold the evidence? Same rule as
-    retrieval-only: keywords first, expect_pages as fallback.
+    retrieval-only: keywords first, expect_pages as fallback (if enabled).
     Returns (hit, "keyword" | "page" | None); hit is None if untestable."""
-    if not case["expect_keywords"] and not case.get("expect_pages"):
+    if is_untestable(case, use_pages):
         return None, None
-    rank, how = correct_rank(list(zip(ans.chunks, ans.scores)), case)
+    rank, how = correct_rank(list(zip(ans.chunks, ans.scores)), case, use_pages)
     return rank is not None, how
 
 
@@ -46,7 +64,7 @@ def keyword_recall(ans, keywords) -> float | None:
 
 # ---------------------------------------------------------------- retrieval-only
 
-def correct_rank(hits, case) -> tuple[int | None, str | None]:
+def correct_rank(hits, case, use_pages: bool = True) -> tuple[int | None, str | None]:
     """(1-based rank, how it matched). Keywords first, pages as fallback.
 
     1. "keyword": smallest r such that the top-r chunks together contain every
@@ -55,9 +73,10 @@ def correct_rank(hits, case) -> tuple[int | None, str | None]:
        sits on an expect_page -> rank of the first such chunk. Weaker evidence:
        right page, but the chunk may not hold the answer.
     3. (None, None): neither found within the search depth.
-    expect_pages is optional; questions without it skip step 2.
+    expect_pages is optional; questions without it, or use_pages=False
+    (short corpus, see page_fallback_enabled), skip step 2.
     """
-    pages = set(case.get("expect_pages", []))
+    pages = set(case.get("expect_pages", [])) if use_pages else set()
     missing = {k.lower() for k in case["expect_keywords"]}
     if missing:
         for r, (c, _) in enumerate(hits, 1):
@@ -74,14 +93,15 @@ def correct_rank(hits, case) -> tuple[int | None, str | None]:
 
 def run_retrieval_only(args, retriever, chunks):
     depth = max(args.k, args.k_wide, args.rank_depth)
+    use_pages, n_pages = page_fallback_enabled(chunks)
     rows, by_type = [], defaultdict(list)
     for case in load_golden():
         row = {"id": case["id"], "type": case["type"], "rank": None, "how": None, "na": False}
-        if not case["expect_keywords"] and not case.get("expect_pages"):
+        if is_untestable(case, use_pages):
             row["na"] = True            # abstention: only testable end to end
         else:
             row["rank"], row["how"] = correct_rank(
-                retriever.search(case["question"], depth), case)
+                retriever.search(case["question"], depth), case, use_pages)
         rows.append(row)
         by_type[case["type"]].append(row)
 
@@ -117,13 +137,15 @@ def run_retrieval_only(args, retriever, chunks):
 
     # terminal
     print(f"\nretriever={args.retriever}  k={args.k}  k_wide={args.k_wide}  depth={depth}")
+    print(page_fallback_status(use_pages, n_pages))
     print(f"ranks: N = keyword match, Np = page match only, >{depth} = neither, n/a = untestable\n")
     print(f"{head[0]:<14}{head[1]:>4}{head[2]:>11}{head[3]:>12}{head[4]:>7}{head[5]:>11}  {head[6]}")
     for row in table:
         print(f"{row[0]:<14}{row[1]:>4}{row[2]:>11}{row[3]:>12}{row[4]:>7}{row[5]:>11}  {row[6]}")
 
     if not args.no_record:
-        out = record_baseline(args, chunks, depth, head, table)
+        out = record_baseline(args, chunks, depth, head, table,
+                              page_fallback_status(use_pages, n_pages))
         print(f"\n-> appended to {out}")
 
 
@@ -154,7 +176,7 @@ def _run_info(chunks) -> dict:
 BASELINES = Path(__file__).parent / "baselines.md"
 
 
-def record_baseline(args, chunks, depth, head, table) -> Path:
+def record_baseline(args, chunks, depth, head, table, page_status: str) -> Path:
     info = _run_info(chunks)
     lines = []
     if not BASELINES.exists():
@@ -172,6 +194,7 @@ def record_baseline(args, chunks, depth, head, table) -> Path:
         f"- config: k={args.k}, k_wide={args.k_wide}, rank_depth={depth}, "
         f"chunk_target_tokens={config.CHUNK_TARGET_TOKENS}{weight}, "
         f"tokenizer sha1 `{info['tokenizer_sha']}`",
+        f"- {page_status}",
         f"- code: git `{info['git']}`",
         f"- ranks: `N` keyword match, `Np` page match only (keywords missed), "
         f"`>{depth}` neither, `n/a` untestable (no keywords or pages)",
@@ -213,12 +236,13 @@ def main():
 
     llm = get_llm()   # after the branch: retrieval-only needs no model or API key
     rows, by_type = [], defaultdict(list)
+    use_pages, n_pages = page_fallback_enabled(chunks)
 
     for case in load_golden():
         t0 = time.perf_counter()
         ans = answer(case["question"], retriever, llm, args.k)
         elapsed = time.perf_counter() - t0
-        hit, how = retrieval_hit(ans, case)
+        hit, how = retrieval_hit(ans, case, use_pages)
         row = {
             "id": case["id"],
             "type": case["type"],
@@ -232,7 +256,8 @@ def main():
         rows.append(row)
         by_type[case["type"]].append(row)
 
-    print(f"\nretriever={args.retriever}  backend={llm.name}  k={args.k}  n={len(rows)}\n")
+    print(f"\nretriever={args.retriever}  backend={llm.name}  k={args.k}  n={len(rows)}")
+    print(page_fallback_status(use_pages, n_pages) + "\n")
     print(f"{'type':<14}{'n':>4}{'retr_hit':>10}{'page-only':>11}{'kw_recall':>11}{'latency':>9}")
     for t, rs in by_type.items():
         hits = [r['retrieval_hit'] for r in rs if r['retrieval_hit'] is not None]

@@ -11,6 +11,12 @@ TOP_K = 3              # chunks passed to the LLM
 BM25_WEIGHT = 0.7      # term queries favour lexical match; tune this with evals
 CHUNK_TARGET_TOKENS = 150
 
+# --- evals ---
+# Page fallback (expect_pages) only switches on when the corpus has MORE pages
+# than this. On a short document most chunks sit on an "expected" page, so a
+# page match says nothing about whether the chunk holds the answer.
+PAGE_AMOUNT_TRIGGER_PAGE_HIT = 50
+
 # --- generation ---
 LLM_BACKEND = os.getenv("LLM_BACKEND", "ollama")   # "ollama" | "claude" | "openai"
 

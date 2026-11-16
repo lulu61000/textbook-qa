@@ -52,10 +52,12 @@ to `expect_pages` (optional in `golden.jsonl`). Ranks read `N` = keyword match,
 (abstention). End-to-end runs use the same rule on the k chunks given to the
 model, saved as `retrieval_match` in the results JSON.
 
-Known limits: on a short document the page fallback is loose (most chunks sit
-on an expected page), and retrieval-only checks keywords across the whole
-depth before trying pages, so it can disagree with end-to-end on the same
-question.
+The page fallback only switches on when the corpus has more pages than
+`PAGE_AMOUNT_TRIGGER_PAGE_HIT` in `config.py` (default 50): on a short
+document most chunks sit on an "expected" page, so a page match proves
+nothing. Each run prints and records whether it was ON or OFF. When ON,
+retrieval-only checks keywords across the whole depth before trying pages,
+so it can still disagree with end-to-end on the same question.
 
 ## Choosing the LLM
 
